@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     
+     <title>Collin Chan</title>
+     <link rel='icon' href='./assets/favicon.png' type='image/x-icon'/>
+     <link rel="stylesheet" href="assets/css/main.css">
+     <link rel="stylesheet" href="assets/css/responsive.css">
+     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+<body>
+
+     <header id="topbar">
+          <div class="header-proper">
+               <h1 class="logo"> <a href="#">Collin Chan</a></h1>
+               <nav>
+                    <ul class="nav-buttons">
+                         <button><a class="bold" href="#intro">About</a></button>
+                         <!--<button><a class="bold" href="#exp">Experiences</a></button>-->
+                         <button><a class="bold" href="#project">Projects</a></button>
+                         <button><a class="contact-button bold" href="#contact">Let's Connect</a></button>
+                    </ul>
+               </nav>
+          </div>
+          <div class="scroll-line"></div>
+     </header>
+
+     <div class="main">
+          <div class="quick-intro-section">
+               <span class="txt-rotate quick-intro desktopsize"data-period="2000" data-rotate='["Hi, my name is Collin", "let iKnow = [\"Swift\", \"Python\", \"C\", \"Java\", \"JavaScript\"]", "and of course HTML5 and CSS3 😉", "Scroll down to learn more" ]'></span>
+               <!--<div class="icon-scroll"></div>-->
+          </div>
+
+          <div id="intro" class="intro-section">
+               <div class="column">
+                    <div class="img-outline">
+                         <img class="intro-pic" src="assets/collinChan.jpeg" alt="profile pic">
+                    </div>
+               </div>
+               <div class="column">
+                    <div>
+                         <p class="intro-text">
+                              Hi, my name is <span class="bold">Collin Chan</span> a student studying<br class="nomobile">
+                              Computer Science at the University of Toronto<br class="nomobile">
+                              with experience in iOS and web development.<br class="nomobile">
+                              I am currently seeking for Summer 2021 internships!<br class="nomobile">
+                         </p>
+                    </div>
+               </div>
+          </div>
+          <!--<div id="exp" class="exp-section">
+               <h1 class="title">Experiences</h1>
+          </div>-->
+
+          <div id="project" class="project-section">
+               <h1 class="title" style="padding-bottom: 50px;">Projects</h1>
+               <div class="project1"> 
+                    <!--<h1 class="subtitle">Boggle</h1>
+                    <p>An assignment made in Java, designed for the GUI interface</p>-->
+                    <div class="overlay"> 
+                         <a target="_blank" href="https://github.com/chancollin5101/Boggle">View Boggle</a>
+                    </div>
+               </div>
+               <div class="project2">
+                    <!--<h1 class="subtitle">Kravers</h1>
+                    <p>An iOS application that curates restaurant suggestions for users.</p>-->
+                    <div class="overlay"> 
+                         <a target="_blank" href="https://github.com/chancollin5101/kravers-ios">View Kravers</a>
+                    </div>
+               </div>
+               <div class="project3"> 
+                    <a target="_blank" href="https://github.com/chancollin5101">
+                         <img class="more-pic" src="./assets/view-more.png"/>
+                    </a>
+               </div>
+          </div>
+          <div id="contact" class="contact-section">
+               <h1 class="title" style="margin-left: 10%;color: var(--fg-primary);">Let's Connect!</h1>
+               <p class="column connect-text">For any inquiries, feel free to connect with me on my <a class="link" href="https://www.linkedin.com/in/chan-collin" target="_blank"><span class="bold"> LinkedIn</span></a> <br class="nomobile"/>
+                    or simply shoot me an <a class="bold link" href = "mailto: collin.chan@mail.utoronto.ca"><span class="bold link">email</span></a>. I would be more than happy<br class="nomobile"/>
+                    to answer any questions you may have.<br class="nomobile"/>
+               </p>
+               <div class="spacer"></div>
+          </div>
+          <footer>
+               <p class="footer-text">
+                    <a target="_blank" href="https://www.linkedin.com/in/chan-collin">LinkedIn</a>
+                    <a target="_blank" href="https://github.com/chancollin5101">GitHub</a>    
+                    <a target="_blank" href="">Resume</a>
+               </p>
+          </footer>
+          
+     </div>
+
+
+<script type="text/javascript">
+
+     var TxtRotate = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+      };
+
+      TxtRotate.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+          this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+          this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 40;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+          delta = this.period;
+          this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+          this.isDeleting = false;
+          this.loopNum++;
+          delta = 1;
+        }
+
+        setTimeout(function() {
+          that.tick();
+        }, delta);
+      };
+
+      window.onload = function() {
+        var elements = document.getElementsByClassName('txt-rotate');
+        for (var i=0; i<elements.length; i++) {
+          var toRotate = elements[i].getAttribute('data-rotate');
+          var period = elements[i].getAttribute('data-period');
+          if (toRotate) {
+            new TxtRotate(elements[i], JSON.parse(toRotate), period);
+          }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".txt-rotate > .wrap { border-right: 3px solid #A8DBA8 }";
+        document.body.appendChild(css);
+      };
+
+     $(document).ready(function() {
+          $("#topbar").hide();
+     });
+
+     $('a[href*="#"]')
+     // Remove links that don't actually link to anything
+     .not('[href="#"]')
+     .not('[href="#0"]')
+     .click(function(event) {
+     // On-page links
+     if (
+          location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+          && 
+          location.hostname == this.hostname
+     ) {
+          // Figure out element to scroll to
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+          // Does a scroll target exist?
+          if (target.length) {
+          // Only prevent default if animation is actually gonna happen
+          event.preventDefault();
+          $('html, body').animate({
+               scrollTop: target.offset().top
+          }, 1000, function() {
+               // Callback after animation
+               // Must change focus!
+               var $target = $(target);
+               $target.focus();
+               if ($target.is(":focus")) { // Checking if the target was focused
+               return false;
+               } else {
+               $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+               $target.focus(); // Set focus again
+               };
+          });
+          }
+     }
+     });
+
+     
+     $(window).scroll(function() {
+
+          if ($("#topbar").is(":visible")) {
+               var wintop = $(window).scrollTop(), docheight =
+     
+               $(document).height(), winheight = $(window).height();
+               var scrolled = (wintop/(docheight-winheight))*100;
+
+               $('.scroll-line').css('width', (scrolled + '%'));
+          } else {
+               $("#topbar").show();
+          }
+     });
+
+</script>
+
+</body>
+</html>
