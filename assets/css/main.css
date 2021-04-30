@@ -197,17 +197,15 @@ button a:hover {
      display: flex;
 }
 
-.contact-button { 
+.contact-button {
      margin-left: 10px;
-     color: white;
      border-radius: 10px;
      background-color: var(--fg-primary);
-     padding: 10px;
 }
 
 .contact-button:hover { 
      color: var(--bg-secondary);
-     opacity: 100%;
+     opacity: 70%;
      box-shadow: 1px 1px grey;
 
 }
