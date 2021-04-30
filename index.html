@@ -11,22 +11,42 @@
      <link rel="stylesheet" href="assets/css/responsive.css">
      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
-<body>
+<header id="topbar">
+     <div id="headerNav">
+          <h1 class="logo"> <a href="#">Collin Chan</a></h1>
+          <nav>
+               <ul class="desktopList">
+                    <li class="bold"><a href="#intro">About</a></li>
+                    <li class="bold"><a href="#project">Projects</a></li>
+                    <li class="bold contactcontact-button"><a href="#contact">Let's Connect</a></li>
+               </ul>
+               <div id="barBtn">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+               </div>
+         </nav>
+     </div>
+     <div class="scroll-line"></div>
+ </header>
 
-     <header id="topbar">
+<body>
+     
+
+     <!--<header id="topbar">
           <div class="header-proper">
                <h1 class="logo"> <a href="#">Collin Chan</a></h1>
                <nav>
                     <ul class="nav-buttons">
                          <button><a class="bold" href="#intro">About</a></button>
-                         <!--<button><a class="bold" href="#exp">Experiences</a></button>-->
+                         <button><a class="bold" href="#exp">Experiences</a></button>
                          <button><a class="bold" href="#project">Projects</a></button>
                          <button><a class="contact-button bold" href="#contact">Let's Connect</a></button>
                     </ul>
                </nav>
           </div>
           <div class="scroll-line"></div>
-     </header>
+     </header>-->
 
      <div class="main">
           <div class="quick-intro-section">
@@ -46,7 +66,7 @@
                               Hi, my name is <span class="bold">Collin Chan</span> a student studying<br class="nomobile">
                               Computer Science at the University of Toronto<br class="nomobile">
                               with experience in iOS and web development.<br class="nomobile">
-                              I am currently seeking for Summer 2021 internships!<br class="nomobile">
+                              Currently an SDE @ <span class="bold" style="color: #800020">The CGI Group</span><br class="nomobile">
                          </p>
                     </div>
                </div>
@@ -94,123 +114,7 @@
           </footer>
           
      </div>
-
-
-<script type="text/javascript">
-
-     var TxtRotate = function(el, toRotate, period) {
-        this.toRotate = toRotate;
-        this.el = el;
-        this.loopNum = 0;
-        this.period = parseInt(period, 10) || 2000;
-        this.txt = '';
-        this.tick();
-        this.isDeleting = false;
-      };
-
-      TxtRotate.prototype.tick = function() {
-        var i = this.loopNum % this.toRotate.length;
-        var fullTxt = this.toRotate[i];
-
-        if (this.isDeleting) {
-          this.txt = fullTxt.substring(0, this.txt.length - 1);
-        } else {
-          this.txt = fullTxt.substring(0, this.txt.length + 1);
-        }
-
-        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
-        var that = this;
-        var delta = 40;
-
-        if (this.isDeleting) { delta /= 2; }
-
-        if (!this.isDeleting && this.txt === fullTxt) {
-          delta = this.period;
-          this.isDeleting = true;
-        } else if (this.isDeleting && this.txt === '') {
-          this.isDeleting = false;
-          this.loopNum++;
-          delta = 1;
-        }
-
-        setTimeout(function() {
-          that.tick();
-        }, delta);
-      };
-
-      window.onload = function() {
-        var elements = document.getElementsByClassName('txt-rotate');
-        for (var i=0; i<elements.length; i++) {
-          var toRotate = elements[i].getAttribute('data-rotate');
-          var period = elements[i].getAttribute('data-period');
-          if (toRotate) {
-            new TxtRotate(elements[i], JSON.parse(toRotate), period);
-          }
-        }
-        // INJECT CSS
-        var css = document.createElement("style");
-        css.type = "text/css";
-        css.innerHTML = ".txt-rotate > .wrap { border-right: 3px solid #A8DBA8 }";
-        document.body.appendChild(css);
-      };
-
-     $(document).ready(function() {
-          $("#topbar").hide();
-     });
-
-     $('a[href*="#"]')
-     // Remove links that don't actually link to anything
-     .not('[href="#"]')
-     .not('[href="#0"]')
-     .click(function(event) {
-     // On-page links
-     if (
-          location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
-          && 
-          location.hostname == this.hostname
-     ) {
-          // Figure out element to scroll to
-          var target = $(this.hash);
-          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-          // Does a scroll target exist?
-          if (target.length) {
-          // Only prevent default if animation is actually gonna happen
-          event.preventDefault();
-          $('html, body').animate({
-               scrollTop: target.offset().top
-          }, 1000, function() {
-               // Callback after animation
-               // Must change focus!
-               var $target = $(target);
-               $target.focus();
-               if ($target.is(":focus")) { // Checking if the target was focused
-               return false;
-               } else {
-               $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-               $target.focus(); // Set focus again
-               };
-          });
-          }
-     }
-     });
-
-     
-     $(window).scroll(function() {
-
-          if ($("#topbar").is(":visible")) {
-               var wintop = $(window).scrollTop(), docheight =
-     
-               $(document).height(), winheight = $(window).height();
-               var scrolled = (wintop/(docheight-winheight))*100;
-
-               $('.scroll-line').css('width', (scrolled + '%'));
-          } else {
-               $("#topbar").show();
-          }
-     });
-
-</script>
-
+<script src="navbar.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
