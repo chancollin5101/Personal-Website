@@ -26,8 +26,8 @@
     }
 
     #barBtn {
-        margin-top: 1vh;
-        margin-right: 1vw;
+        margin-top: 2.5vh;
+        margin-right: 5vw;
         display: inline;
     }
 
@@ -36,17 +36,22 @@
     }
 
     .desktopList {
+        padding-right: 5vw;
         position: absolute;
         right: 0px;
         height: 100vh;
-        top: 5vh;
-        background-color: var(--fg-secondary);
+        top: 6.5vh;
+        background-color: var(--fg-primary);
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 30vw;
         transform: translateX(100%);
         transition: transform 0.5 ease-in;
+    }
+
+    #headerNav li a{
+        color: white;
     }
 
     .navActive {

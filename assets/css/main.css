@@ -40,7 +40,8 @@
      align-items: stretch;
  }
  .desktopList{
-     padding-right: 50px;
+     padding-bottom: 3vh;
+     padding-right: 10vw;
      display: flex;
      flex-wrap: wrap;
      justify-content: center;
@@ -52,14 +53,14 @@
      display: block;
  }
  #headerNav li a{
-     color: var(--bg-secondary);
+     color: var(--fg-primary);
      text-decoration: none;
      display: block;
      padding: 15px 5px;
  }
 
  #headerNav li:hover, #headerNav li a:hover, #headerNav{
-     color: var(--fg-primary);
+     color: var(--bg-secondary);
      /*background-color: #2D3B45;*/
  }
  
@@ -169,12 +170,9 @@ header {
 .logo a{
      color: var(--fg-primary);
      text-decoration: none;
-     margin-left: 5vw;
+     margin-left: 10vw;
 }
 
-nav { 
-     margin-top: 1.5vh;
-}
 
 button {
      border: none;
