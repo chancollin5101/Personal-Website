@@ -19,6 +19,16 @@
         font-size: medium;
     }
 
+    .intro-section { 
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .img-outline { 
+        margin-left: 0;
+    }
+
     #navTitle{
         align-self: center;
         color: white;
