@@ -22,7 +22,7 @@ window.onload = function() {
     this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
 
     var that = this;
-    var delta = 40;
+    var delta = 50;
 
     if (this.isDeleting) { delta /= 2; }
 
