@@ -1,5 +1,5 @@
 window.onload = function() {
-    $("#topbar").hide();
+    //$("#topbar").hide();
     var TxtRotate = function(el, toRotate, period) {
             this.toRotate = toRotate;
             this.el = el;
