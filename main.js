@@ -1,4 +1,5 @@
 window.onload = function() {
+    $("#topbar").hide();
     var TxtRotate = function(el, toRotate, period) {
             this.toRotate = toRotate;
             this.el = el;
@@ -22,7 +23,7 @@ window.onload = function() {
     this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
 
     var that = this;
-    var delta = 50;
+    var delta = 40;
 
     if (this.isDeleting) { delta /= 2; }
 
@@ -53,10 +54,6 @@ window.onload = function() {
     css.type = "text/css";
     css.innerHTML = ".txt-rotate > .wrap { border-right: 3px solid #A8DBA8 }";
     document.body.appendChild(css);    
-    
-    $(document).ready(function() {
-      $("#topbar").hide();
-    });
 
     $('a[href*="#"]')
     // Remove links that don't actually link to anything
